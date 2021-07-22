@@ -1,19 +1,13 @@
 #include <catch2/catch.hpp>
+#include <ph_data_structures/data_structures.hpp>
 
-//
-//
-//
-TEST_CASE ("Constructs and assignments")
+
+
+namespace ph::data_structures
 {
-//GIVEN ("User defined classes A B C D")
-//{
-//	AND_WHEN ()
-//	{
-//		THEN
-//		{
-//
-//		}
-//	}
-//}
-    std::cout << "tjo" << std::endl;
+    TEST_CASE ("stack")
+    {
+        auto s_0 = stack {1, 2, 3};
+        REQUIRE (s_0.top() == 3);
+    }
 }

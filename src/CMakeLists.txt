@@ -8,6 +8,10 @@ ph_create_modules (
 		"data_structures"
 		"stack"
 		"queue"
+		"array"
+		"linked_list"
+		"tree"
+		"graph"
 
 	INCLUDE
 		"${include_dir}"

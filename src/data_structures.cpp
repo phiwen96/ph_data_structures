@@ -1,6 +1,2 @@
-#pragma once
-
-
-#include "queue.hpp"
-#include "stack.hpp"
+#include "data_structures.hpp"
 
