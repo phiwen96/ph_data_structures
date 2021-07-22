@@ -30,9 +30,9 @@ endif ()
 # if (NOT TARGET ph_type)
 # 	add_subdirectory (dependencies/ph_type)
 # endif ()
-# if (NOT TARGET ph_memory)
-# 	add_subdirectory (dependencies/ph_memory)
-# endif ()
+if (NOT TARGET ph_memory)
+	add_subdirectory (dependencies/ph_memory)
+endif ()
 
 if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 	
