@@ -8,8 +8,10 @@ project (
 	LANGUAGES CXX
 )	
 
+if (NOT TARGET phake)
+	add_subdirectory (cmake/phake)
+endif ()
 
-add_subdirectory (cmake/phake)
 # if (NOT TARGET ph_coroutines)
 # 	add_subdirectory (dependencies/ph_coroutines)
 # endif ()
