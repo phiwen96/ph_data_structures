@@ -15,5 +15,5 @@ TEST_CASE ("Constructs and assignments")
 //		}
 //	}
 //}
-    std::cout << "hi" << std::endl;
+    std::cout << "tjo" << std::endl;
 }
