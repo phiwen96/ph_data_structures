@@ -13,11 +13,11 @@ add_library (${self} STATIC
 
 
 
-ph_precompile (TARGET ${self} PUBLIC PCH ${std_pch} ${boost_pch})
+ph_precompile (TARGET ${self} PUBLIC PCH ${std_pch})
 
-add_library (ph::database ALIAS ${self})
-target_link_libraries (${self} PRIVATE ph::concepts ${Boost_LIBRARIES})
-target_include_directories (${self} PUBLIC ${PROJECT_SOURCE_DIR}/include ${Boost_INCLUDE_DIRS})
+add_library (ph::data_structures ALIAS ${self})
+target_link_libraries (${self} PRIVATE ph::concepts)
+target_include_directories (${self} PUBLIC ${PROJECT_SOURCE_DIR}/include)
 # target_include_directories (${self} PUBLIC ph::coroutines)
 target_compile_features (${self} PUBLIC cxx_std_20)
 target_include_directories (${self} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
