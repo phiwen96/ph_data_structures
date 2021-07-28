@@ -24,28 +24,20 @@ if (NOT TARGET ph_cmake)
 	endif ()
 endif ()
 
-# add_subdirectory (cmake/phake)
-# if (NOT TARGET ph_coroutines)
-# 	add_subdirectory (dependencies/ph_coroutines)
-# endif ()
 if (NOT TARGET ph_concepts)
-	add_subdirectory (dependencies/ph_concepts)
+	include (FetchContent)
+	FetchContent_Declare(
+  		ph_concepts
+  		GIT_REPOSITORY https://github.com/phiwen96/ph_concepts.git
+  		GIT_TAG        v0.0.0)
+
+	FetchContent_GetProperties(ph_concepts)
+	
+	if (NOT ph_concepts_POPULATED)
+  		FetchContent_Populate (ph_concepts)
+  		add_subdirectory (${ph_concepts_SOURCE_DIR} ${ph_concepts_BINARY_DIR})
+	endif ()
 endif ()
-# if (NOT TARGET ph_type_list)
-# 	add_subdirectory (dependencies/ph_type_list)
-# endif ()
-# if (NOT TARGET ph_macros)
-# 	add_subdirectory (dependencies/ph_macros)
-# endif ()
-# if (NOT TARGET ph_time)
-# 	add_subdirectory (dependencies/ph_time)
-# endif ()
-# if (NOT TARGET ph_type)
-# 	add_subdirectory (dependencies/ph_type)
-# endif ()
-# if (NOT TARGET ph_memory)
-# 	add_subdirectory (dependencies/ph_memory)
-# endif ()
 
 if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 	
