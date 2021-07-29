@@ -24,20 +24,8 @@ if (NOT TARGET ph_cmake)
 	endif ()
 endif ()
 
-if (NOT TARGET ph_concepts)
-	include (FetchContent)
-	FetchContent_Declare(
-  		ph_concepts
-  		GIT_REPOSITORY https://github.com/phiwen96/ph_concepts.git
-  		GIT_TAG        v0.0.0)
+ph_fetch_git_repos (USER "phiwen96" REPOS "ph_concepts")
 
-	FetchContent_GetProperties(ph_concepts)
-	
-	if (NOT ph_concepts_POPULATED)
-  		FetchContent_Populate (ph_concepts)
-  		add_subdirectory (${ph_concepts_SOURCE_DIR} ${ph_concepts_BINARY_DIR})
-	endif ()
-endif ()
 
 if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 	set (CMAKE_CXX_STANDARD 20)
