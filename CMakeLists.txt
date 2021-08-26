@@ -65,6 +65,21 @@ macro(Fetch )
 	
 endmacro(Fetch)
 
+macro(Bajs)
+	set (opt)
+	set (single)
+	set (mult BAJS)
+
+	cmake_parse_arguments (ARG "${opt}" "${single}" "${mult}" ${ARGN})
+
+	foreach(A IN LISTS BAJS)
+		message(${A})
+	endforeach(A IN LISTS BAJS)
+	
+endmacro(Bajs)
+
+Bajs (BAJS hej då)
+
 Fetch (TARGET ph_file)
 Fetch (TARGET ph_cmake)
 Fetch (TARGET ph_optional)

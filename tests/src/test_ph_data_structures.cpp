@@ -6,6 +6,7 @@ using std::cout, std::endl;
 
 TEST_CASE ("main")
 {
+    cout << bajs << endl;
     
     cout << "hi" << endl;
 }
