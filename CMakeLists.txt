@@ -28,81 +28,27 @@ if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 	set_property (GLOBAL PROPERTY USE_FOLDERS ON)
 endif()
 
-macro(Fetch )
- 	set(options OPTIONAL FAST)
-    set(oneValueArgs TARGET)
-    set(multiValueArgs TARGETS CONFIGURATIONS)
-    cmake_parse_arguments (LOL "${options}" "${oneValueArgs}"
-                          "${multiValueArgs}" ${ARGN} )
 
-	if (NOT LOL_TARGET)
-		message (FATAL_MESSAGE "please specify target")
-	endif ()
-
-	if (NOT LOL_TAG)
-		set (LOL_TAG "v0.0.0")
-	endif ()
-
-	if (NOT LOL_REPO)
-		set (LOL_REPO "https://github.com/phiwen96/${LOL_TARGET}.git")
-	endif ()
-
+if (NOT TARGET ph_cmake)
 	include (FetchContent)
-
 	FetchContent_Declare(
-  		${LOL_TARGET}
-  		GIT_REPOSITORY ${LOL_REPO}
-  		GIT_TAG        ${LOL_TAG})
+  		ph_cmake
+  		GIT_REPOSITORY https://github.com/phiwen96/ph_cmake.git
+  		GIT_TAG        0.0.0)
 
-	FetchContent_GetProperties (${LOL_TARGET})
+	FetchContent_GetProperties (ph_cmake)
 	
-	if (NOT ${LOL_TARGET}_POPULATED)
-  		FetchContent_Populate (${LOL_TARGET})
-  		add_subdirectory (${${LOL_TARGET}_SOURCE_DIR} ${${LOL_TARGET}_BINARY_DIR})
+	if (NOT ph_cmake_POPULATED)
+  		FetchContent_Populate (ph_cmake)
+  		add_subdirectory (${ph_cmake_SOURCE_DIR} ${ph_cmake_BINARY_DIR})
 	endif ()
-	
-						
-	
-endmacro(Fetch)
+endif ()
 
-macro(Bajs)
-	set (opt)
-	set (single)
-	set (mult BAJS)
+Fetch (TARGETS ph_concepts) #ph_file ph_optional ph_proxy)
 
-	cmake_parse_arguments (ARG "${opt}" "${single}" "${mult}" ${ARGN})
-
-	foreach(A IN LISTS BAJS)
-		message(${A})
-	endforeach(A IN LISTS BAJS)
-	
-endmacro(Bajs)
-
-Bajs (BAJS hej då)
-
-Fetch (TARGET ph_file)
-Fetch (TARGET ph_cmake)
-Fetch (TARGET ph_optional)
-
-Fetch (TARGET ph_concepts)
-
-Fetch (TARGET ph_proxy)
 
  
-# if (NOT TARGET ph_cmake)
-# 	include (FetchContent)
-# 	FetchContent_Declare(
-#   		ph_cmake
-#   		GIT_REPOSITORY https://github.com/phiwen96/ph_cmake.git
-#   		GIT_TAG        v0.0.0)
 
-# 	FetchContent_GetProperties (ph_cmake)
-	
-# 	if (NOT ph_cmake_POPULATED)
-#   		FetchContent_Populate (ph_cmake)
-#   		add_subdirectory (${ph_cmake_SOURCE_DIR} ${ph_cmake_BINARY_DIR})
-# 	endif ()
-# endif ()
 
 # if (NOT TARGET ph_concepts)
 # 	include (FetchContent)
