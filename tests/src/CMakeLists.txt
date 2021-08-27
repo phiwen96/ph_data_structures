@@ -28,10 +28,10 @@ file(GLOB SOURCE_LIST *.cpp)
             FILES  ${SOURCE_LIST}
         )
 
-	source_group(TREE "include"
-            PREFIX "include"               
-            FILES  ${HEADER_LIST}
-        )
+	# source_group(TREE "ph_data_structures/include/*.hpp"
+    #         PREFIX "include"               
+    #         FILES  ${HEADER_LIST}
+    #     )
 	# set_target_properties(test_${name} PROPERTIES PROJECT_LABEL "test_${name}Foo Tastic")
 	target_link_libraries (test_${CMAKE_PROJECT_NAME} PUBLIC ${CMAKE_PROJECT_NAME} Catch2::Catch2)
 	target_include_directories (test_${CMAKE_PROJECT_NAME} PUBLIC ../include)
