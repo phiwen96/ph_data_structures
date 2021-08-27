@@ -14,18 +14,23 @@ if (NOT TARGET Catch2)
 endif ()
 
 
-# file(GLOB_RECURSE HEADER_LIST "include/*.hpp")
+file(GLOB_RECURSE HEADER_LIST "../include/*.hpp")
 file(GLOB SOURCE_LIST *.cpp)
 
 
 # set (deps )
 # macro (ph_add_test name)
-	add_executable (test_${CMAKE_PROJECT_NAME} ${SOURCE_LIST})
+	add_executable (test_${CMAKE_PROJECT_NAME} ${SOURCE_LIST} ${HEADER_LIST})
 	# set_target_properties(test_${CMAKE_PROJECT_NAME}          PROPERTIES FOLDER "main/${PROJECT_NAME}/tests")
 	# source_group (bajs//kiss test_${name}.cpp)
 	source_group(TREE ${CMAKE_CURRENT_LIST_DIR}
             PREFIX "sources"               
             FILES  ${SOURCE_LIST}
+        )
+
+	source_group(TREE "include"
+            PREFIX "include"               
+            FILES  ${HEADER_LIST}
         )
 	# set_target_properties(test_${name} PROPERTIES PROJECT_LABEL "test_${name}Foo Tastic")
 	target_link_libraries (test_${CMAKE_PROJECT_NAME} PUBLIC ${CMAKE_PROJECT_NAME} Catch2::Catch2)
